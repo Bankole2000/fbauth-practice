@@ -3,6 +3,9 @@ const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
 const accountDetails = document.querySelector('.account-details');
 const adminItems = document.querySelectorAll('.admin');
+const userImage = document.querySelector('#user-image');
+const userRole = document.querySelector('#user-role');
+const userEmail = document.querySelector('#user-email');
 
 const setupUI = (user) => {
   if (user) {
@@ -10,13 +13,10 @@ const setupUI = (user) => {
     if(user.admin) {
       adminItems.forEach(item => item.style.display = 'block');
     }
-
     // toggle ui elements
     loggedInLinks.forEach(link => link.style.display = 'block')
     loggedOutLinks.forEach(link => link.style.display = 'none')
-    const userImage = document.querySelector('#user-image');
-    const userRole = document.querySelector('#user-role');
-    const userEmail = document.querySelector('#user-email');
+    
     // get and show account details
     // get bio
     const gravatar = MD5(user.email.trim().toLowerCase());
@@ -50,7 +50,7 @@ const setupUI = (user) => {
     loggedInLinks.forEach(link => link.style.display = 'none')
     loggedOutLinks.forEach(link => link.style.display = 'block')
     adminItems.forEach(item => item.style.display = 'none');
-    userImage.setAttribute('src', 'img/logo.svg');
+    userImage.setAttribute('src', 'img/default.png');
     userRole.innerHTML = 'Not Logged In';
     userEmail.innerHTML = 'Please Login or Signup';
     html = `

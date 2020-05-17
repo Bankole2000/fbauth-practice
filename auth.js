@@ -8,6 +8,7 @@ adminForm.addEventListener('submit', (e) => {
     .then(result => {
       console.log(result);
       M.toast({ html: `${adminEmail} has been made an admin`});
+      adminForm.reset();
     });
 })
 
@@ -67,12 +68,12 @@ signupForm.addEventListener('submit', (e) => {
   // Sign up the user
   auth.createUserWithEmailAndPassword(email, password)
     .then((cred) => {
+      console.log(cred, cred.user);
       return db.collection('users').doc(cred.user.uid).set({
         bio: signupForm['signup-bio'].value,
       });
     })
-    .then((cred) => {
-      console.log(cred, cred.user);
+    .then(() => {      
       const modal = document.querySelector('#modal-signup');
       M.toast({ html: '<i class="mdi mdi-check green-text"></i>Signup Successful!'})
       M.Modal.getInstance(modal).close();

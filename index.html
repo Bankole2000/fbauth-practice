@@ -41,9 +41,9 @@
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
       <div class="background">
-        <img src="img/office.jpg">
+        <img src="img/bg.jpg" width="100%">
       </div>
-      <a href="#" data-target="modal-account"><img class="circle modal-trigger" src="img/logo.svg" id="user-image"></a>
+      <a href="#" data-target="modal-account"><img class="circle modal-trigger" src="img/default.png" id="user-image"></a>
       <a href="#name"><span class="white-text name" id="user-role">Not Logged In</span></a>
       <a href="#email"><span class="white-text email" id="user-email">Please Login or Signup</span></a>
     </div></li>
@@ -98,11 +98,12 @@
       <br>
       <form id="signup-form">
         <div class="input-field">
-          <input type="email" id="signup-email">
+          <input type="email" id="signup-email"
+          autocomplete="off">
           <label for="signup-email">Email Address</label>
         </div>
         <div class="input-field">
-          <input type="password" id="signup-password">
+          <input type="password" id="signup-password" autocomplete="off">
           <label for="signup-password">Choose password</label>
         </div>
         <div class="input-field">
@@ -124,11 +125,11 @@
       <br>
       <form action="" id="login-form">
         <div class="input-field">
-          <input type="email" required="true" id="login-email">
+          <input type="email" required="true" id="login-email" autocomplete="off">
           <label for="login-email">Email Address</label>
         </div>
         <div class="input-field">
-          <input type="password" required="true" id="login-password">
+          <input type="password" required="true" id="login-password" autocomplete="off">
           <label for="login-password">Your Password</label>
         </div>
         <button class="btn yellow darken-2 z-depth-0">
@@ -228,7 +229,7 @@
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "",
+      apiKey: "AIzaSyAXbt2gkqFEblVevJ7uSkU4j2zIxdepnls",
       authDomain: "fbauth1337.firebaseapp.com",
       databaseURL: "https://fbauth1337.firebaseio.com",
       projectId: "fbauth1337",
