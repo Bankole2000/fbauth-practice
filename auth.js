@@ -26,7 +26,7 @@ auth.onAuthStateChanged(user => {
     // Get Data 
     db.collection('guides').onSnapshot((snapshot) => {
       console.log(snapshot.docs);
-      setupGuides(snapshot.docs);
+      setupGuides(snapshot.docs, user.admin);
       setupUI(user);
     }, err => {
       console.log(err.message);

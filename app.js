@@ -72,7 +72,7 @@ const setupUI = (user) => {
 }
 
 // Setup guides
-const setupGuides = (data) => {
+const setupGuides = (data, isAdmin) => {
   
   let html = '';
   if (data.length > 0) { 
@@ -82,7 +82,7 @@ const setupGuides = (data) => {
       console.log(guide);
       const li = `
         <li>
-          <div class="collapsible-header grey lighten-4 valign-wrapper"><a href="#" class="edit modal-trigger" data-target="modal-edit"><i class="mdi mdi-square-edit-outline teal-text"></i></a><a href="#" class="delete modal-trigger" data-target="modal-delete"><i class="mdi mdi-trash-can-outline red-text"></i></a>${guide.title}</div>
+          <div class="collapsible-header grey lighten-4 valign-wrapper"><a href="#" style="display: ${ isAdmin ? 'block': 'none'};" class="edit modal-trigger" data-target="modal-edit"><i class="mdi mdi-square-edit-outline teal-text"></i></a><a href="#" style="display: ${ isAdmin ? 'block': 'none'};" class="delete modal-trigger" data-target="modal-delete"><i class="mdi mdi-trash-can-outline red-text"></i></a>${guide.title}</div>
           <div class="collapsible-body white"><span>${guide.content}</span></div>
         </li>
       `;

@@ -48,28 +48,28 @@
       <a href="#email"><span class="white-text email" id="user-email">Please Login or Signup</span></a>
     </div></li>
     <li class="logged-in" style="display: none;">
-      <a href="#!" class="modal-trigger" data-target="modal-account">
+      <a href="#!" class="waves-effect modal-trigger" data-target="modal-account">
         <i class="mdi mdi-account-circle mdi-24px teal-text"></i>Account
       </a>
     </li>
     <li class="logged-in logout" style="display: none;">
-      <a href="#!" >
+      <a href="#!" class="waves-effect">
         <i class="mdi mdi-logout-variant mdi-24px teal-text"></i> Logout
       </a>
     </li>
     <li class="logged-out" style="display: none;">
-      <a href="#!" class="modal-trigger" data-target="modal-login">
+      <a href="#!" class="waves-effect modal-trigger" data-target="modal-login">
         <i class="mdi mdi-login-variant mdi-24px teal-text"></i> Login
       </a>
     </li>
     <li class="logged-out" style="display: none;">
-      <a href="#!" class="modal-trigger" data-target="modal-signup"><i class="mdi mdi-account-plus mdi-24px teal-text"></i> Signup
+      <a href="#!" class="waves-effect modal-trigger" data-target="modal-signup"><i class="mdi mdi-account-plus mdi-24px teal-text"></i> Signup
       </a>
     </li>
     <li class="admin"><div class="divider"></div></li>
     <li class="admin"><a class="subheader"> Admin Only Area</a></li>
-    <li class="admin">
-      <a class="waves-effect" href="#!" class="modal-trigger" data-target="modal-create"><i class="mdi mdi-shield-account mdi-24px teal-text"></i> Create Guide
+    <li class="admin" style="display: none;">
+      <a class="waves-effect modal-trigger" href="#!" data-target="modal-create"><i class="mdi mdi-shield-account mdi-24px teal-text"></i> Create Guide
       </a>
     </li>
   </ul>
@@ -107,7 +107,7 @@
           <label for="signup-password">Choose password</label>
         </div>
         <div class="input-field">
-          <input type="text" required="true" id="signup-bio">
+          <input type="text" required="true" id="signup-bio" autocomplete="off">
           <label for="signup-bio">One Line Bio</label>
         </div>
         <button class="btn yellow darken-2 z-depth-0">
@@ -229,7 +229,7 @@
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "AIzaSyAXbt2gkqFEblVevJ7uSkU4j2zIxdepnls",
+      apiKey: "",
       authDomain: "fbauth1337.firebaseapp.com",
       databaseURL: "https://fbauth1337.firebaseio.com",
       projectId: "fbauth1337",
