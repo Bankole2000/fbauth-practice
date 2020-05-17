@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="assets/css/materialdesignicons.min.css"> -->
+  <link rel="stylesheet" href="assets/css/mdi5.min.css">
+  <link rel="stylesheet" href="assets/css/materialize.min.css">
+  <title>Game Guidez</title>
+</head>
+<body class="grey lighten-3">
+
+  <!-- Navbar -->
+  <nav class="z-depth-0 grey lighten-4">
+    <div class="nav-wrapper container">
+      <a href="#" data-target="slide-out" class="sidenav-trigger blue-text"><i class="mdi mdi-menu mdi-32px show-on-medium-and-down"></i></a>
+      <a href="#" class="brand-logo">
+        <img src="img/logo.svg" style="width: 180px; margin-top: 10px" alt="">
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+        </li>
+        <li class="logged-in logoud" style="display: none;">
+          <a href="#" class="grey-text" id="logout">Logout</a>
+        </li>
+        <li class="admin" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Custom Side Nav -->
+  <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="img/office.jpg">
+      </div>
+      <a href="#" data-target="modal-account"><img class="circle modal-trigger" src="img/logo.svg" id="user-image"></a>
+      <a href="#name"><span class="white-text name" id="user-role">Not Logged In</span></a>
+      <a href="#email"><span class="white-text email" id="user-email">Please Login or Signup</span></a>
+    </div></li>
+    <li class="logged-in" style="display: none;">
+      <a href="#!" class="modal-trigger" data-target="modal-account">
+        <i class="mdi mdi-account-circle mdi-24px teal-text"></i>Account
+      </a>
+    </li>
+    <li class="logged-in logout" style="display: none;">
+      <a href="#!" >
+        <i class="mdi mdi-logout-variant mdi-24px teal-text"></i> Logout
+      </a>
+    </li>
+    <li class="logged-out" style="display: none;">
+      <a href="#!" class="modal-trigger" data-target="modal-login">
+        <i class="mdi mdi-login-variant mdi-24px teal-text"></i> Login
+      </a>
+    </li>
+    <li class="logged-out" style="display: none;">
+      <a href="#!" class="modal-trigger" data-target="modal-signup"><i class="mdi mdi-account-plus mdi-24px teal-text"></i> Signup
+      </a>
+    </li>
+    <li class="admin"><div class="divider"></div></li>
+    <li class="admin"><a class="subheader"> Admin Only Area</a></li>
+    <li class="admin">
+      <a class="waves-effect" href="#!" class="modal-trigger" data-target="modal-create"><i class="mdi mdi-shield-account mdi-24px teal-text"></i> Create Guide
+      </a>
+    </li>
+  </ul>
+
+  <!-- admin section -->
+  <form action="" class="center-align admin-actions admin" style="margin: 40px auto; max-width: 300px; display: none;">
+    <input type="email" placeholder="user@email.com" required="true" id="admin-email">
+    <button class="btn-small yellow darken-2 z-depth-0"><i class="mdi mdi-shield-account"></i> Make Admin</button>
+  </form>
+
+  <!-- Guide List -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border:none;">
+      <!-- <li>
+        <div class="collapsible-header grey lighten-4">Guide Title</div>
+        <div class="collapsible-body white"><span>Lorem Ipsum Dolor Sit Amet.</span></div>
+      </li> -->
+     
+    </ul>
+  </div>
+
+  <!-- Html Expanded - Signup Modal -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4>
+      <br>
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email">
+          <label for="signup-email">Email Address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password">
+          <label for="signup-password">Choose password</label>
+        </div>
+        <div class="input-field">
+          <input type="text" required="true" id="signup-bio">
+          <label for="signup-bio">One Line Bio</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">
+          <i class="mdi mdi-login"></i> Signup
+        </button>
+        <p class="error pink-text center-align"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="modal-login">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <br>
+      <form action="" id="login-form">
+        <div class="input-field">
+          <input type="email" required="true" id="login-email">
+          <label for="login-email">Email Address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" required="true" id="login-password">
+          <label for="login-password">Your Password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">
+          <i class="mdi mdi-login"></i> Login
+        </button>
+        <p class="error pink-text center-align"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Account Modal -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <h4>Account Details</h4>
+      <br>
+      <div class="account-details">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="img/logo.svg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <h4 class="black-text">
+                Not Logged in
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div id="modal-delete" class="modal">
+    <div class="modal-content center-align">
+      <h4>Delete this Game Guide ?</h4>
+      <br>
+      <div class="account-details">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+          Sampe Game Guide Data
+          </div>
+          <button class="btn yellow darken-2 z-depth-0"><i class="mdi mdi-trash-can-outline"></i> Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Guide Modal -->
+  <div class="modal" id="modal-create">
+    <div class="modal-content">
+      <h4>Create Guide</h4>
+      <br>
+      <form action="" id="create-form">
+        <div class="input-field">
+          <input type="text" required="true" id="title">
+          <label for="title">Guide Title</label>
+        </div>
+        <div class="input-field">
+          <textarea name="" id="content" cols="30" rows="10" class="materialize-textarea" required="true"></textarea>
+          <label for="content">Guide Content</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0"><i class="mdi mdi-edit"></i>Create</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Update Guide Modal -->
+  <div class="modal" id="modal-edit">
+    <div class="modal-content">
+      <h4>Update Guide</h4>
+      <br>
+      <form action="" id="update-form">
+        <div class="input-field">
+          <input type="text" required="true" id="title">
+          <label for="title">Guide Title</label>
+        </div>
+        <div class="input-field">
+          <textarea name="" id="content" cols="30" rows="10" class="materialize-textarea" required="true"></textarea>
+          <label for="content">Guide Content</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0"><i class="mdi mdi-pencil-box-outline"></i> Update</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script> -->
+  <script src="fbsdk/firebase-app.js"></script>
+  <script src="fbsdk/firebase-auth.js"></script>
+  <script src="fbsdk/firebase-firestore.js"></script>
+  <script src="fbsdk/firebase-functions.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "",
+      authDomain: "fbauth1337.firebaseapp.com",
+      databaseURL: "https://fbauth1337.firebaseio.com",
+      projectId: "fbauth1337",
+      appId: "1:144267330783:web:79a84f0ed033527e49956a"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const functions = firebase.functions();
+  </script>
+  
+  <script src="assets/js/materialize.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="assets/js/md5.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
