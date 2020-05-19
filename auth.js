@@ -54,6 +54,78 @@ createForm.addEventListener('submit', (e) => {
     .catch(err => console.log(err.message));
 })
 
+// Populate Update Form 
+const updateForm = document.querySelector('#update-form');
+const populateUpdateGuideForm = (id, store) => {
+  console.log(id, store);
+  const guideToUpdate = store.find(guide => guide.id === id);
+  updateForm['edit-title'].value = guideToUpdate.title;
+  updateForm['edit-content'].value = guideToUpdate.content;
+  updateForm['edit-guide-id'].value = guideToUpdate.id;
+  console.log(`update form updated`);
+  M.updateTextFields();
+  // db.collection('guides').doc(id).get()
+  //   .then((doc) => {
+  //     if (doc.exists) {
+  //       const guide = doc.data();
+  //       updateForm['edit-title'].value = guideToUpdate.title;
+  //       updateForm['edit-content'].value = guideToUpdate.content;
+  //       updateForm['edit-guide-id'].value = guideToUpdate.id;
+  //       console.log(`update form updated`);
+  //       M.updateTextFields();
+  //     }
+  //   })
+}
+
+// Update Guide
+updateForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  id = updateForm['edit-guide-id'].value;
+  title = updateForm['edit-title'].value;
+  title = title.trim();
+  content = updateForm['edit-content'].value;
+  content = content.trim();
+  if (title && content) {
+    console.log('Updated');
+    console.table({title, content});
+    db.collection('guides').doc(id).update({
+      title,
+      content,
+    })
+      .then(() => {
+        M.toast({ html: '<i class="mdi mdi-check"></i> Guide Updated' });
+        updateForm.reset();
+        const modal = document.querySelector('#modal-edit');
+        M.Modal.getInstance(modal).close();
+      })
+  } else {
+    console.log('Insufficient Details');
+    M.toast({ html: '<i class="mdi mdi-close-circle"></i> Incomplete Details'})
+  }
+})
+
+// Delete Guide
+const deleteForm = document.querySelector('#delete-form');
+deleteForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const id = deleteForm['delete-guide-id'].value;
+  db.collection('guides').doc(id).delete()
+    .then(() => {
+      console.log(`deleted ${id}`);
+      M.toast({ html: '<i class="mdi mdi-check-circle mdi-24px"></i> &nbsp; Guide Deleted' });
+      const modal = document.querySelector('#modal-delete');
+      M.Modal.getInstance(modal).close();
+    });  
+})
+
+// Update Delete Modal 
+updateDeleteModal = (id, store) => {
+  const guide = store.find(guide => guide.id === id);
+  document.querySelector('#delete-guide-name').innerHTML = `Delete 👉 ${guide.title}`;
+  deleteForm['delete-guide-id'].value = guide.id;
+  console.log('Modal updated');
+}
+
 // Signup
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {

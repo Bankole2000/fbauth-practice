@@ -170,10 +170,15 @@
       <div class="account-details">
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
-          Sampe Game Guide Data
+          <span id="delete-guide-name">Sampe Game Guide Data</span>
           </div>
-          <button class="btn yellow darken-2 z-depth-0"><i class="mdi mdi-trash-can-outline"></i> Delete</button>
-        </div>
+          <form action="" id="delete-form">
+            <div class="input-field">
+              <input type="hidden" required="true" id="delete-guide-id">
+            </div>
+            <button class="btn yellow darken-2 z-depth-0"><i class="mdi mdi-trash-can-outline"></i> Delete</button>
+          </form>
+          </div>
       </div>
     </div>
   </div>
@@ -204,12 +209,15 @@
       <br>
       <form action="" id="update-form">
         <div class="input-field">
-          <input type="text" required="true" id="title">
+          <input type="text" required="true" id="edit-title">
           <label for="title">Guide Title</label>
         </div>
         <div class="input-field">
-          <textarea name="" id="content" cols="30" rows="10" class="materialize-textarea" required="true"></textarea>
+          <textarea name="" id="edit-content" cols="30" rows="10" class="materialize-textarea" required="true"></textarea>
           <label for="content">Guide Content</label>
+        </div>
+        <div class="input-field">
+          <input type="hidden" required="true" id="edit-guide-id">
         </div>
         <button class="btn yellow darken-2 z-depth-0"><i class="mdi mdi-pencil-box-outline"></i> Update</button>
       </form>

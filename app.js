@@ -6,6 +6,7 @@ const adminItems = document.querySelectorAll('.admin');
 const userImage = document.querySelector('#user-image');
 const userRole = document.querySelector('#user-role');
 const userEmail = document.querySelector('#user-email');
+let updateBtns, deleteBtns, store = [];
 
 const setupUI = (user) => {
   if (user) {
@@ -43,9 +44,8 @@ const setupUI = (user) => {
           </div>
         `;       
         accountDetails.innerHTML = html;
+        enableUpdateBtns(store, user.admin);
       })
-    
-
   } else {
     loggedInLinks.forEach(link => link.style.display = 'none')
     loggedOutLinks.forEach(link => link.style.display = 'block')
@@ -71,18 +71,44 @@ const setupUI = (user) => {
   }
 }
 
+// Add event listers to enable Update and Delete Buttons
+const enableUpdateBtns = (data, isAdmin) => {
+  console.log(data, isAdmin);
+  if (isAdmin) {
+    updateBtns = document.querySelectorAll('.edit');
+    updateBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        populateUpdateGuideForm(btn.id, data);
+        console.log(`update ${btn.id}`);
+      })      
+    });
+    deleteBtns = document.querySelectorAll('.delete');
+    deleteBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        updateDeleteModal(btn.id, data);
+        console.log(`delete ${btn.id}`)
+      })
+    })
+    console.log(updateBtns, deleteBtns);
+  }  
+} 
+
 // Setup guides
 const setupGuides = (data, isAdmin) => {
-  
   let html = '';
+  store = [];
   if (data.length > 0) { 
     console.log('this fired');
     data.forEach(doc => {
       const guide = doc.data();
-      console.log(guide);
+      guide.id = doc.id;
+      store.push(guide);
+      console.log(store);
       const li = `
         <li>
-          <div class="collapsible-header grey lighten-4 valign-wrapper"><a href="#" style="display: ${ isAdmin ? 'block': 'none'};" class="edit modal-trigger" data-target="modal-edit"><i class="mdi mdi-square-edit-outline teal-text"></i></a><a href="#" style="display: ${ isAdmin ? 'block': 'none'};" class="delete modal-trigger" data-target="modal-delete"><i class="mdi mdi-trash-can-outline red-text"></i></a>${guide.title}</div>
+          <div class="collapsible-header grey lighten-4 valign-wrapper"><a href="#" style="display: ${ isAdmin ? 'block': 'none'};" class="edit modal-trigger" id="${ isAdmin? doc.id: ''}" data-target="modal-edit"><i class="mdi mdi-square-edit-outline teal-text"></i></a><a href="#" style="display: ${ isAdmin ? 'block': 'none'};" class="delete modal-trigger" id=${isAdmin ? doc.id : ''} data-target="modal-delete"><i class="mdi mdi-trash-can-outline red-text"></i></a>${guide.title}</div>
           <div class="collapsible-body white"><span>${guide.content}</span></div>
         </li>
       `;
@@ -90,6 +116,7 @@ const setupGuides = (data, isAdmin) => {
     });
   } else {
     console.log('not logged in');
+    store.length = 0;
     html += `
     <li>
       <div class="collapsible-header grey lighten-4">Not Logged In</div>
